@@ -1,0 +1,53 @@
+---
+// Slim "chapter divider" that introduces a what-we-do pillar right before
+// the section/demo that proves it.
+interface Props {
+  n: string;
+  label: string;
+  title: string;
+  copy: string;
+  warm?: boolean;
+  bg?: string;
+}
+const { n, label, title, copy, warm = false, bg = 'var(--ink-900)' } = Astro.props;
+---
+
+<section class="chapter" style={`background:${bg}`} aria-label={`What we do — ${label}`}>
+  <div class="container">
+    <div class="rail" data-reveal>
+      <span class="ghost mono" aria-hidden="true">{n}</span>
+      <div class="body">
+        <span class:list={['kicker', { warm }]}>What we do · {label}</span>
+        <h2 class="title">{title}</h2>
+        <p class="lead">{copy}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .chapter { padding-block: clamp(3rem, 7vw, 5.5rem) 0; }
+  .rail {
+    display: flex;
+    gap: clamp(1rem, 3vw, 2.2rem);
+    align-items: flex-start;
+    border-top: 1px solid var(--glass-border);
+    padding-top: clamp(1.6rem, 3vw, 2.4rem);
+  }
+  .ghost {
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+    font-weight: 700;
+    line-height: 0.9;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.02));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    flex-shrink: 0;
+  }
+  .title { font-size: clamp(1.5rem, 3vw, 2.1rem); margin-bottom: 0.5rem; }
+  .lead { font-size: 1rem; max-width: 38rem; }
+
+  @media (max-width: 640px) {
+    .rail { flex-direction: column; gap: 0.8rem; }
+  }
+</style>

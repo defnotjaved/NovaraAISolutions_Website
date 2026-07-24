@@ -1,0 +1,97 @@
+---
+// Early orientation: what Novara actually does, with anchors to the live
+// demos further down the page. "A landing page mixed with demos."
+const pillars = [
+  {
+    n: '01',
+    title: 'Conversational AI',
+    line: 'AI agents that answer your WhatsApp, calls, and SMS — instantly, day or night, and hand off to a human when it matters.',
+    anchor: '#relay',
+    demo: 'Play the customer in a live sale',
+  },
+  {
+    n: '02',
+    title: 'Operations Automation',
+    line: 'Workflows, CRM, and content that run themselves — orders dispatched, renewals chased, posts published, all on autopilot.',
+    anchor: '#case',
+    demo: 'See it running in production',
+  },
+  {
+    n: '03',
+    title: 'Custom Builds',
+    line: 'Full products and websites designed around how business actually works here — from school transport to salon bookings.',
+    anchor: '#reach',
+    demo: 'Drive the Reach prototype',
+  },
+];
+---
+
+<section class="wwd section" id="what-we-do" aria-label="What we do">
+  <div class="container head" data-reveal>
+    <span class="kicker">What we do</span>
+    <h2>Three ways we put AI <span class="grad-text">to work for you.</span></h2>
+    <p class="lead">
+      Don’t take our word for any of it — every one of these is <strong>playable on this page</strong>.
+      Scroll, tap, break things.
+    </p>
+  </div>
+
+  <div class="container grid">
+    {pillars.map((p, i) => (
+      <a class="pillar glass-card" href={p.anchor} data-reveal style={`--reveal-delay:${i * 100}ms`}>
+        <span class="pnum mono">{p.n}</span>
+        <h3>{p.title}</h3>
+        <p>{p.line}</p>
+        <span class="demo-link mono">▶ {p.demo} ↓</span>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .wwd { background: var(--ink-900); padding-bottom: clamp(3rem, 6vw, 5rem); }
+  .head { max-width: 44rem; margin-bottom: 2.6rem; }
+  .head .lead strong { color: var(--text-100); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.1rem;
+  }
+  .pillar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.6rem 1.6rem 1.4rem;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+  }
+  .pillar::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 2px;
+    background: var(--brand-gradient);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur-slow) var(--ease-out);
+  }
+  .pillar:hover { transform: translateY(-5px); border-color: var(--glass-border-bright); }
+  .pillar:hover::before { transform: scaleX(1); }
+  .pnum {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--icon-blue);
+  }
+  .pillar h3 { font-size: 1.2rem; }
+  .pillar p { font-size: 0.9rem; color: var(--text-400); flex: 1; }
+  .demo-link {
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal-300);
+    margin-top: 0.4rem;
+  }
+</style>
