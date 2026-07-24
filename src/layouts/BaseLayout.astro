@@ -1,0 +1,127 @@
+---
+import '@fontsource/plus-jakarta-sans/700.css';
+import '@fontsource/plus-jakarta-sans/800.css';
+import '@fontsource/dm-sans/400.css';
+import '@fontsource/dm-sans/500.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/700.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FabAgent from '../islands/FabAgent';
+import { SITE } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Extra JSON-LD blocks to inject */
+  jsonLd?: object[];
+}
+
+const { title, description, jsonLd = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/og.png', Astro.site);
+
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  url: SITE.domain,
+  logo: new URL('/favicon.svg', Astro.site).toString(),
+  email: SITE.email,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    telephone: `+${SITE.whatsappE164}`,
+    areaServed: 'TT',
+  },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#071120" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
+    {jsonLd.map((block) => (
+      <script type="application/ld+json" set:html={JSON.stringify(block)} />
+    ))}
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <FabAgent client:idle />
+
+    <script>
+      // Shared scroll-reveal + count-up observer (ported from the GadgetBay site)
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const reveals = document.querySelectorAll('[data-reveal]');
+      if (reduceMotion) {
+        reveals.forEach((el) => el.classList.add('in-view'));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('in-view');
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { threshold: 0.15 }
+        );
+        reveals.forEach((el) => io.observe(el));
+      }
+
+      // Count-up numbers: <span data-countup="120" data-suffix="+">120+</span>
+      const counters = document.querySelectorAll<HTMLElement>('[data-countup]');
+      if (!reduceMotion && counters.length) {
+        const co = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (!e.isIntersecting) continue;
+              co.unobserve(e.target);
+              const el = e.target as HTMLElement;
+              const target = Number(el.dataset.countup || '0');
+              const suffix = el.dataset.suffix || '';
+              const start = performance.now();
+              const dur = 1200;
+              const tick = (now: number) => {
+                const t = Math.min(1, (now - start) / dur);
+                const eased = 1 - Math.pow(1 - t, 3);
+                el.textContent = Math.round(target * eased).toLocaleString() + suffix;
+                if (t < 1) requestAnimationFrame(tick);
+              };
+              requestAnimationFrame(tick);
+            }
+          },
+          { threshold: 0.5 }
+        );
+        counters.forEach((el) => co.observe(el));
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, waLink } from '../data/site';
+
+const wa = waLink('Hi Novara! I want to talk about AI for my business.');
+---
+
+<BaseLayout
+  title="Contact — Novara AI Solutions"
+  description="Talk to Novara AI Solutions — WhatsApp us, book a call, or email. Trinidad & Tobago."
+>
+  <section class="contact-hero">
+    <div class="aurora" aria-hidden="true">
+      <div class="blob blue c1"></div>
+      <div class="blob sunset c2"></div>
+      <div class="grain"></div>
+    </div>
+    <div class="container inner" data-reveal>
+      <span class="kicker">Contact</span>
+      <h1>Start a <span class="grad-text">conversation.</span></h1>
+      <p class="lead">
+        Fitting, right? That’s the product. Message us and see how fast the reply comes.
+      </p>
+
+      <div class="cards">
+        <a class="ccard glass-card" href={wa} target="_blank" rel="noopener" data-reveal>
+          <span class="ccard-icon wa" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.9-4.45 9.9-9.91A9.87 9.87 0 0 0 12.04 2m0 18.03a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.12.82.83-3.04-.2-.31a8.1 8.1 0 0 1-1.24-4.28c0-4.5 3.66-8.15 8.16-8.15 4.49 0 8.15 3.66 8.15 8.15 0 4.5-3.66 8.12-8.15 8.12"/></svg>
+          </span>
+          <h3>WhatsApp us</h3>
+          <p>Fastest. Talk to the AI first if you like — it’ll hand you to us.</p>
+          <span class="mono go">wa.me/{SITE.whatsappE164} →</span>
+        </a>
+
+        <a class="ccard glass-card" href={SITE.bookingUrl} data-reveal style="--reveal-delay:90ms">
+          <span class="ccard-icon cal" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/><circle cx="12" cy="15" r="1.6" fill="currentColor" stroke="none"/></svg>
+          </span>
+          <h3>Book a call</h3>
+          <p>Twenty minutes. Tell us what eats your time; we’ll tell you what we’d automate first.</p>
+          <span class="mono go">pick a slot →</span>
+        </a>
+
+        <a class="ccard glass-card" href={`mailto:${SITE.email}`} data-reveal style="--reveal-delay:180ms">
+          <span class="ccard-icon mail" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg>
+          </span>
+          <h3>Email</h3>
+          <p>For the formal stuff — proposals, invoices, partnerships.</p>
+          <span class="mono go">{SITE.email} →</span>
+        </a>
+      </div>
+
+      <p class="mono base-line">BASED IN TRINIDAD &amp; TOBAGO · WORKING ACROSS THE CARIBBEAN</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--ink-950);
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: calc(var(--header-h) + 4rem) 0 5rem;
+  }
+  .c1 { width: 46vw; height: 46vw; left: -12vw; top: -14vw; }
+  .c2 { width: 30vw; height: 30vw; right: -8vw; bottom: -10vw; }
+  .inner { position: relative; z-index: 2; }
+  .inner .lead { margin-block: 1.2rem 3rem; }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.1rem;
+    margin-bottom: 2.6rem;
+  }
+  .ccard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.6rem;
+    text-decoration: none;
+    transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+  }
+  .ccard:hover { transform: translateY(-5px); border-color: var(--glass-border-bright); }
+  .ccard-icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    display: grid; place-items: center;
+    margin-bottom: 0.4rem;
+  }
+  .ccard-icon.wa { background: rgba(31, 179, 85, 0.15); color: #3fd07a; }
+  .ccard-icon.cal { background: var(--brand-gradient-soft); color: var(--icon-blue); }
+  .ccard-icon.mail { background: rgba(255, 179, 71, 0.12); color: var(--gold-400); }
+  .ccard p { font-size: 0.88rem; color: var(--text-400); flex: 1; }
+  .go { font-size: 0.66rem; letter-spacing: 0.12em; color: var(--icon-blue); }
+
+  .base-line { font-size: 0.66rem; letter-spacing: 0.2em; color: var(--text-500); }
+</style>

@@ -1,0 +1,49 @@
+---
+import ReachDemo from '../../islands/ReachDemo';
+import WaveDivider from '../WaveDivider.astro';
+---
+
+<section class="reach-sec section" id="reach" aria-label="Reach — school transport visibility">
+  <div class="aurora" aria-hidden="true">
+    <div class="blob teal rb1"></div>
+    <div class="blob sunset rb2"></div>
+  </div>
+
+  <div class="container head" data-reveal>
+    <span class="kicker warm">Live prototype — Reach</span>
+    <h2>Know they <span class="warm-text">reach.</span></h2>
+    <p class="lead">
+      For every parent who's watched the clock over a school run: Reach sends exactly two WhatsApp
+      messages per trip — <strong>boarded</strong>, and <strong>arrived</strong>. No GPS tracking.
+      No live maps. No surveillance. Just the driver's tap, held for a grace window so a mis-tap
+      never reaches a parent, and proof the operator can invoice on.
+    </p>
+    <p class="mono try-line">TRY IT — YOU'RE THE DRIVER. TAP “BOARDED”.</p>
+  </div>
+
+  <div class="container" data-reveal>
+    <ReachDemo client:visible />
+  </div>
+
+  <WaveDivider fill="var(--ink-950)" />
+</section>
+
+<style>
+  .reach-sec {
+    background: var(--ink-900);
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 8rem;
+  }
+  .rb1 { width: 40vw; height: 40vw; left: -14vw; top: -8vw; opacity: 0.14; }
+  .rb2 { width: 34vw; height: 34vw; right: -12vw; bottom: -8vw; opacity: 0.12; }
+  .head { max-width: 46rem; margin-bottom: 2.6rem; position: relative; z-index: 2; }
+  .head .lead strong { color: var(--text-100); }
+  .try-line {
+    margin-top: 1.2rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    color: var(--teal-300);
+  }
+  .container:last-of-type { position: relative; z-index: 2; }
+</style>

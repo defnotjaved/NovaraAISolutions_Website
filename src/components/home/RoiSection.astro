@@ -1,0 +1,21 @@
+---
+import RoiCalculator from '../../islands/RoiCalculator';
+---
+
+<section class="roi-sec section" id="roi" aria-label="What slow replies cost">
+  <div class="container head" data-reveal>
+    <span class="kicker warm">The steelpan math</span>
+    <h2>What does slow replying <span class="warm-text">cost you?</span></h2>
+    <p class="lead">
+      Turn the pans. Your numbers, your money — counted the conservative way.
+    </p>
+  </div>
+  <div class="container" data-reveal>
+    <RoiCalculator client:visible />
+  </div>
+</section>
+
+<style>
+  .roi-sec { background: var(--ink-950); }
+  .head { max-width: 42rem; margin-bottom: 2.8rem; }
+</style>

@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { waLink } from '../data/site';
+---
+
+<BaseLayout
+  title="404 — Novara AI Solutions"
+  description="Page not found."
+>
+  <section class="nf">
+    <div class="aurora" aria-hidden="true">
+      <div class="blob violet n1"></div>
+      <div class="grain"></div>
+    </div>
+    <div class="container inner">
+      <span class="mono code">[STATE: not_found]</span>
+      <h1>This page didn’t <span class="grad-text">reach.</span></h1>
+      <p class="lead">But every message you send us does. Promise.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="/">Back home</a>
+        <a class="btn btn-ghost" href={waLink('Hi Novara! I got lost on your website 😅')} target="_blank" rel="noopener">Tell us on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .nf {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--ink-950);
+    padding: calc(var(--header-h) + 3rem) 0 4rem;
+  }
+  .n1 { width: 44vw; height: 44vw; left: 20vw; top: -10vw; }
+  .inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.2rem;
+  }
+  .code {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: #fff;
+    background: linear-gradient(135deg, #e58f1f, #d96c15);
+    padding: 4px 12px;
+    border-radius: 4px;
+  }
+  .ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+</style>

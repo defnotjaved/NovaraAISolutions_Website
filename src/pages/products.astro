@@ -1,0 +1,181 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { PRODUCTS } from '../data/products';
+import { SITE, waLink } from '../data/site';
+---
+
+<BaseLayout
+  title="Products — Novara AI Solutions"
+  description="Relay (WhatsApp AI sales agent), Reach (school transport visibility), IconBook (salon bookings) and the rest of the Novara stack."
+>
+  <section class="page-hero">
+    <div class="aurora" aria-hidden="true">
+      <div class="blob violet ph1"></div>
+      <div class="blob teal ph2"></div>
+      <div class="grain"></div>
+    </div>
+    <div class="container" data-reveal>
+      <span class="kicker">Products</span>
+      <h1>Software we <span class="grad-text">actually run.</span></h1>
+      <p class="lead">
+        We don’t sell theory. These are the products we build, operate, and improve every week.
+      </p>
+    </div>
+  </section>
+
+  <!-- Flagships -->
+  <section class="section flag-sec">
+    <div class="container">
+      <article class="flag glass-card" id="relay" data-reveal>
+        <div class="flag-copy">
+          <div class="flag-top">
+            <span class="kicker">Flagship 01</span>
+            <span class="chip live">LIVE IN PRODUCTION</span>
+          </div>
+          <h2>Relay</h2>
+          <p class="strap mono">THE WHATSAPP AI SALES AGENT + OPERATIONS DASHBOARD</p>
+          <p class="body">
+            Relay answers every WhatsApp message your business gets — instantly, day or night. It
+            answers from your real catalog, collects orders field by field, sends product photos,
+            attributes each lead to the ad that brought it, dispatches deliveries, chases renewals,
+            and escalates to a human the moment a conversation needs one. Behind it: a full
+            dashboard — inbox, orders, customers, escalations, analytics, roles.
+          </p>
+          <ul class="feat mono">
+            <li>AI slot-filling order collection</li>
+            <li>Sticky human escalation</li>
+            <li>Ad attribution per conversation</li>
+            <li>Delivery + payment integrations</li>
+            <li>Renewal & winback ladders</li>
+            <li>Multi-tenant, role-based</li>
+          </ul>
+          <div class="flag-ctas">
+            <a class="btn btn-primary" href="/#relay">Try the live demo</a>
+            <a class="btn btn-ghost" href={waLink('Hi Novara! I want Relay for my business.')} target="_blank" rel="noopener">Get Relay</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="flag glass-card warm" id="reach" data-reveal>
+        <div class="flag-copy">
+          <div class="flag-top">
+            <span class="kicker warm">Flagship 02</span>
+            <span class="chip amber">EARLY ACCESS</span>
+          </div>
+          <h2>Reach</h2>
+          <p class="strap mono">SCHOOL TRANSPORT VISIBILITY — “KNOW THEY REACH.”</p>
+          <p class="body">
+            Parents get exactly two WhatsApp messages per school run: boarded, and arrived. Drivers
+            get a big-thumb tap app with an undo grace window — because it’s built for a bouncing
+            maxi, not a desk. Operators get a live roster, overdue-trip flags, and automatic
+            monthly invoicing. Deliberately no GPS, no live maps, no surveillance: the driver is
+            being credited for the job, never tracked.
+          </p>
+          <ul class="feat mono">
+            <li>Two-message parent flow</li>
+            <li>Driver tap app + undo window</li>
+            <li>Overdue-trip safety flags</li>
+            <li>Automatic invoicing & reconciliation</li>
+            <li>No GPS · no live map · just proof</li>
+          </ul>
+          <div class="flag-ctas">
+            <a class="btn btn-primary" href="/#reach">Try the prototype</a>
+            <a class="btn btn-ghost" href={waLink('Hi Novara! I want to hear more about Reach.')} target="_blank" rel="noopener">Join early access</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- The rest of the stack -->
+  <section class="section stack-sec">
+    <div class="container">
+      <div class="head" data-reveal>
+        <span class="kicker">The rest of the stack</span>
+        <h2>And it keeps <span class="grad-text">going.</span></h2>
+      </div>
+      <div class="grid">
+        {PRODUCTS.map((p, i) => (
+          <article class="card glass-card" id={p.id} data-reveal style={`--reveal-delay:${(i % 3) * 90}ms`}>
+            <div class="card-top">
+              <span class:list={['chip', { live: p.status === 'LIVE' }]}>{p.status}</span>
+            </div>
+            <h3>{p.name}</h3>
+            <p class="strap mono">{p.strap}</p>
+            <p class="blurb">{p.blurb}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section closing">
+    <div class="container center" data-reveal>
+      <h2>Want one of these <span class="grad-text">for you?</span></h2>
+      <a class="btn btn-primary" href={SITE.bookingUrl}>Book a call</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--ink-950);
+    padding: calc(var(--header-h) + 5rem) 0 4.5rem;
+  }
+  .ph1 { width: 44vw; height: 44vw; left: -12vw; top: -16vw; }
+  .ph2 { width: 36vw; height: 36vw; right: -10vw; top: -4vw; }
+  .page-hero .container { position: relative; z-index: 2; }
+  .page-hero .lead { margin-top: 1.2rem; }
+
+  .flag-sec { background: var(--ink-900); }
+  .flag {
+    padding: clamp(1.8rem, 4vw, 3rem);
+    margin-bottom: 1.6rem;
+    background:
+      radial-gradient(120% 100% at 90% 0%, oklch(0.58 0.23 285 / 0.08), transparent 55%),
+      var(--glass);
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
+  .flag.warm {
+    background:
+      radial-gradient(120% 100% at 90% 0%, rgba(47, 212, 201, 0.07), transparent 55%),
+      var(--glass);
+  }
+  .flag-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .flag h2 { font-size: clamp(2rem, 4.5vw, 3rem); margin-bottom: 0.4rem; }
+  .strap { font-size: 0.62rem; letter-spacing: 0.18em; color: var(--text-400); margin-bottom: 1rem; }
+  .body { color: var(--text-300); max-width: 52rem; margin-bottom: 1.4rem; }
+  .feat {
+    list-style: none; padding: 0; margin: 0 0 1.8rem;
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+  }
+  .feat li {
+    font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.32rem 0.75rem; border-radius: 999px;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    color: var(--text-300);
+  }
+  .flag-ctas { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+
+  .stack-sec { background: var(--ink-950); }
+  .head { margin-bottom: 2.4rem; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.1rem;
+  }
+  .card {
+    padding: 1.4rem;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+    transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--glass-border-bright); }
+  .card .strap { margin-bottom: 0.2rem; }
+  .blurb { font-size: 0.88rem; color: var(--text-300); }
+
+  .closing { background: var(--ink-900); }
+  .center { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
+</style>

@@ -1,0 +1,98 @@
+---
+// Anonymized case study — a Caribbean streaming retailer running Relay in production.
+---
+
+<section class="case-sec section" id="case" aria-label="Case study">
+  <div class="container">
+    <div class="panel glass-card" data-reveal>
+      <div class="panel-head">
+        <span class="kicker">Case study</span>
+        <span class="chip live">RELAY · IN PRODUCTION</span>
+      </div>
+      <h2>A Caribbean streaming retailer<br /><span class="grad-text">stopped missing customers.</span></h2>
+      <p class="lead">
+        Their leads arrive from Meta ads straight into WhatsApp — at lunch, at midnight, during
+        the match. Relay answers every single one, collects the order, and only calls a human
+        when a human is actually needed.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-num"><span data-countup="1000" data-suffix="s">1,000s</span></span>
+          <span class="stat-label mono">CONVERSATIONS HANDLED BY AI</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">11 PM <span class="arrow">→</span> instant</span>
+          <span class="stat-label mono">RESPONSE TIME, AFTER HOURS</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><span data-countup="24" data-suffix="/7">24/7</span></span>
+          <span class="stat-label mono">EVERY LEAD ANSWERED</span>
+        </div>
+      </div>
+
+      <div class="handoff" data-reveal>
+        <span class="handoff-title mono">AND WHEN THE AI SHOULDN'T ANSWER —</span>
+        <div class="handoff-row">
+          <span class="chip amber">⚠ ESCALATED — customer asked for a human</span>
+          <span class="handoff-arrow" aria-hidden="true">→</span>
+          <span class="handoff-text">AI pauses itself. A person closes the conversation. That honesty is a feature.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .case-sec { background: var(--ink-950); }
+  .panel {
+    padding: clamp(1.8rem, 4vw, 3.2rem);
+    background:
+      radial-gradient(120% 100% at 85% 0%, oklch(0.58 0.23 285 / 0.09), transparent 55%),
+      var(--glass);
+  }
+  .panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .panel h2 { margin-bottom: 1rem; }
+  .panel .lead { margin-bottom: 2.4rem; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.4rem;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.1rem 1.2rem;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    color: var(--text-100);
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-num .arrow { color: var(--teal-300); }
+  .stat-label { font-size: 0.6rem; letter-spacing: 0.16em; color: var(--text-500); }
+
+  .handoff { display: flex; flex-direction: column; gap: 0.7rem; }
+  .handoff-title { font-size: 0.62rem; letter-spacing: 0.2em; color: var(--text-500); }
+  .handoff-row { display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap; }
+  .handoff-arrow { color: var(--text-500); }
+  .handoff-text { font-size: 0.9rem; color: var(--text-300); }
+
+  @media (max-width: 720px) {
+    .stats { grid-template-columns: 1fr; }
+  }
+</style>

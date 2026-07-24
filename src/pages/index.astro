@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import WhatWeDo from '../components/home/WhatWeDo.astro';
+import IntroBand from '../components/home/IntroBand.astro';
+import ProblemStrip from '../components/home/ProblemStrip.astro';
+import RelayShowcase from '../components/home/RelayShowcase.astro';
+import ReachShowcase from '../components/home/ReachShowcase.astro';
+import ProductConstellation from '../components/home/ProductConstellation.astro';
+import CaseStudyBand from '../components/home/CaseStudyBand.astro';
+import ServicesGrid from '../components/home/ServicesGrid.astro';
+import RoiSection from '../components/home/RoiSection.astro';
+import AboutBand from '../components/home/AboutBand.astro';
+import CtaFinale from '../components/home/CtaFinale.astro';
+---
+
+<BaseLayout
+  title="Novara AI Solutions — AI that runs your business on WhatsApp"
+  description="Caribbean-built AI agents, automation, and software from Trinidad & Tobago. WhatsApp AI sales agents, voice agents, workflow automation, and custom AI apps."
+>
+  <Hero />
+  <WhatWeDo />
+
+  <IntroBand
+    n="01"
+    label="Conversational AI"
+    title="Never miss a customer."
+    copy="AI agents on WhatsApp, voice, and SMS that answer instantly, sell from your real catalog, and know when to call a human. Here's the problem they kill — and a live one you can play with."
+  />
+  <ProblemStrip />
+  <RelayShowcase />
+  <RoiSection />
+
+  <IntroBand
+    n="02"
+    label="Operations Automation"
+    title="Run lean."
+    copy="Workflows, an AI-powered CRM, and content pipelines that move work without you — deliveries dispatched, renewals chased, every conversation logged and attributed to the ad that started it. Here it is running for a real client."
+    bg="var(--ink-950)"
+  />
+  <CaseStudyBand />
+
+  <IntroBand
+    n="03"
+    label="Custom Builds"
+    title="Software that fits."
+    copy="When off-the-shelf doesn't match how business works here, we build the product ourselves. This one gives parents proof their child reached school — you're the driver, take it for a spin."
+    warm
+  />
+  <ReachShowcase />
+
+  <ProductConstellation />
+  <ServicesGrid />
+  <AboutBand />
+  <CtaFinale />
+
+  <script>
+    import { initHomeScroll } from '../components/home/homeScroll';
+    initHomeScroll();
+  </script>
+</BaseLayout>

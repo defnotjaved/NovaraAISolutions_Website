@@ -1,0 +1,57 @@
+---
+import WaveDivider from '../WaveDivider.astro';
+import { SITE, waLink } from '../../data/site';
+
+const wa = waLink('Hi Novara! Let’s put AI to work in my business.');
+---
+
+<section class="finale section" id="cta" aria-label="Get started">
+  <div class="aurora" aria-hidden="true">
+    <div class="blob blue f1" data-finale-blob></div>
+    <div class="blob violet f2" data-finale-blob></div>
+    <div class="blob sunset f3" data-finale-blob></div>
+    <div class="grain"></div>
+  </div>
+
+  <div class="container inner" data-reveal>
+    <span class="kicker">Ready when you are</span>
+    <h2 class="big">Let’s put <span class="grad-text">AI to work.</span></h2>
+    <p class="lead center">
+      Message us on WhatsApp and experience the agent yourself — or book a call and tell us what’s
+      eating your time.
+    </p>
+    <div class="ctas">
+      <a class="btn btn-wa" href={wa} target="_blank" rel="noopener">Message us on WhatsApp</a>
+      <a class="btn btn-ghost" href={SITE.bookingUrl}>Book a call</a>
+    </div>
+    <p class="mono micro">+{SITE.whatsappE164} · {SITE.email}</p>
+  </div>
+
+  <WaveDivider fill="var(--ink-900)" />
+</section>
+
+<style>
+  .finale {
+    background: var(--ink-950);
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(6rem, 14vw, 11rem);
+  }
+  .f1 { width: 46vw; height: 46vw; left: -8vw; top: -10vw; opacity: 0.6; }
+  .f2 { width: 42vw; height: 42vw; right: -10vw; top: 0; opacity: 0.55; }
+  .f3 { width: 26vw; height: 26vw; left: 36vw; bottom: -12vw; opacity: 0.25; }
+
+  .inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.3rem;
+  }
+  .big { font-size: clamp(2.6rem, 7vw, 5rem); }
+  .center { margin-inline: auto; }
+  .ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  .micro { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--text-400); }
+</style>

@@ -1,0 +1,180 @@
+---
+import WaveDivider from '../WaveDivider.astro';
+import { SITE, waLink } from '../../data/site';
+
+const wa = waLink('Hi Novara! I want to talk about AI for my business.');
+---
+
+<section class="hero" aria-label="Novara AI Solutions">
+  <div class="aurora" aria-hidden="true">
+    <div class="blob blue b1"></div>
+    <div class="blob violet b2"></div>
+    <div class="blob teal b3"></div>
+    <div class="blob sunset b4"></div>
+    <div class="grain"></div>
+  </div>
+
+  <div class="container inner">
+    <div class="copy">
+      <span class="kicker" data-hero-fade>Novara AI Solutions · Trinidad &amp; Tobago</span>
+      <h1 data-hero-title>
+        <span class="line">AI that runs your</span>
+        <span class="line">business <span class="grad-text">on WhatsApp.</span></span>
+      </h1>
+      <p class="lead" data-hero-fade>
+        Caribbean-built AI agents, automation, and software. Your customers already message you —
+        we make sure something brilliant answers. Every time. Instantly.
+      </p>
+      <div class="ctas" data-hero-fade>
+        <a class="btn btn-wa" href={wa} target="_blank" rel="noopener">Chat with our AI on WhatsApp</a>
+        <a class="btn btn-ghost" href={SITE.bookingUrl}>Book a call</a>
+      </div>
+      <p class="micro mono" data-hero-fade>
+        ⚡ replying to real customers in T&amp;T right now · {SITE.tagline.toLowerCase()}
+      </p>
+    </div>
+
+    <div class="phone-wrap" data-hero-fade aria-hidden="true">
+      <div class="phone hero-phone">
+        <div class="phone-screen hero-screen">
+          <div class="hero-thread dot-grid">
+            <div class="hero-bubble in b-1">how much for the fire stick? 👀</div>
+            <div class="hero-bubble out b-2"><span class="hb-ai">⚡ AI</span>TTD $350 — fully set up. Want one?</div>
+            <div class="hero-bubble in b-3">yes!! 🙌</div>
+            <div class="hero-bubble out b-4"><span class="hb-ai">⚡ AI</span>Great! What’s your delivery address?</div>
+            <div class="hero-tag t-1">[STATE: in_progress]</div>
+            <div class="hero-tag t-2">[ORDER: product=firestick]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <WaveDivider fill="var(--ink-900)" />
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--header-h) + 3.5rem);
+    padding-bottom: 6rem;
+    overflow: hidden;
+    background: var(--ink-950);
+  }
+
+  .b1 { width: 55vw; height: 55vw; left: -14vw; top: -18vw; }
+  .b2 { width: 45vw; height: 45vw; right: -12vw; top: 0; }
+  .b3 { width: 34vw; height: 34vw; left: 30vw; bottom: -18vw; }
+  .b4 { width: 26vw; height: 26vw; right: 12vw; bottom: -10vw; }
+
+  .inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+
+  h1 .line { display: block; }
+  .lead { margin-block: 1.4rem 2rem; }
+  .ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+  .micro { font-size: 0.7rem; letter-spacing: 0.08em; color: var(--text-400); }
+
+  /* ── Floating phone teaser ── */
+  .phone-wrap { perspective: 1200px; display: flex; justify-content: center; }
+  .hero-phone {
+    transform: rotateY(-12deg) rotateX(4deg);
+    animation: hero-float 7s ease-in-out infinite;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+  }
+  @keyframes hero-float {
+    0%, 100% { transform: rotateY(-12deg) rotateX(4deg) translateY(0); }
+    50% { transform: rotateY(-12deg) rotateX(4deg) translateY(-14px); }
+  }
+  .hero-screen { flex: 1; }
+  .hero-thread {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    padding: 3rem 0.9rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    background-color: oklch(0.97 0.005 80);
+  }
+  .hero-bubble {
+    max-width: 82%;
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 1.4;
+    font-family: var(--font-body);
+    box-shadow: var(--shadow-bubble);
+    opacity: 0;
+    animation: hero-pop 0.35s var(--ease-spring) forwards;
+  }
+  .hero-bubble.in {
+    align-self: flex-start;
+    background: #fff;
+    color: oklch(0.18 0.01 80);
+    border-radius: 10px 10px 10px 3px;
+  }
+  .hero-bubble.out {
+    align-self: flex-end;
+    background: linear-gradient(135deg, oklch(0.55 0.22 265), oklch(0.55 0.22 290));
+    color: #fff;
+    border-radius: 10px 10px 3px 10px;
+  }
+  .hb-ai {
+    font-family: var(--font-mono);
+    font-size: 8.5px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.22);
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-right: 6px;
+    letter-spacing: 0.04em;
+  }
+  .hero-tag {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 8.5px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--brand-gradient);
+    padding: 2px 7px;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px oklch(0.55 0.24 285 / 0.55);
+    opacity: 0;
+    animation: hero-pop 0.35s var(--ease-spring) forwards;
+  }
+  .t-1 { right: 8%; top: 34%; animation-delay: 2.1s; transform: rotate(3deg); }
+  .t-2 { left: 6%; bottom: 18%; animation-delay: 4.4s; transform: rotate(-3deg); }
+
+  /* looped conversation: 4 bubbles staggered, then hold */
+  .b-1 { animation-delay: 0.6s; }
+  .b-2 { animation-delay: 1.6s; }
+  .b-3 { animation-delay: 3.0s; }
+  .b-4 { animation-delay: 4.0s; }
+
+  @keyframes hero-pop {
+    from { opacity: 0; transform: translateY(8px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @media (max-width: 900px) {
+    .inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-phone { height: 400px; max-width: 290px; }
+    .hero { padding-top: calc(var(--header-h) + 2.5rem); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-phone { animation: none; }
+    .hero-bubble, .hero-tag { animation: none; opacity: 1; }
+  }
+</style>
