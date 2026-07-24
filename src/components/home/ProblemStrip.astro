@@ -1,0 +1,74 @@
+---
+// Pinned scroll-scrub beat (GSAP wires the pin in homeScroll.ts; without JS
+// or with reduced motion it degrades to a normal stacked section).
+---
+
+<section class="problem" id="problem" aria-label="The problem">
+  <div class="problem-pin">
+    <div class="container">
+      <div class="lines">
+        <p class="pline mono" data-pline>
+          <span class="n">01</span> Customers message at <em>11 PM.</em>
+        </p>
+        <p class="pline mono" data-pline>
+          <span class="n">02</span> Nobody answers till <em>morning.</em>
+        </p>
+        <p class="pline mono" data-pline>
+          <span class="n">03</span> The sale goes to whoever replies <em>first.</em>
+        </p>
+        <p class="punch" data-punch>
+          So we built <span class="grad-text">Relay.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .problem {
+    background: var(--ink-900);
+    position: relative;
+  }
+  .problem-pin {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding-block: 5rem;
+  }
+  .lines { display: flex; flex-direction: column; gap: 1.6rem; }
+  .pline {
+    font-size: clamp(1.05rem, 2.6vw, 1.7rem);
+    color: var(--text-400);
+    letter-spacing: 0.02em;
+  }
+  .pline .n {
+    color: var(--text-500);
+    font-size: 0.7em;
+    margin-right: 1rem;
+    letter-spacing: 0.2em;
+  }
+  .pline em {
+    font-style: normal;
+    color: var(--text-100);
+    position: relative;
+  }
+  .pline em::after {
+    content: '';
+    position: absolute;
+    inset-inline: -2px;
+    bottom: 0.05em;
+    height: 0.42em;
+    background: linear-gradient(90deg, rgba(255, 122, 47, 0.4), rgba(255, 179, 71, 0.35));
+    z-index: -1;
+    transform-origin: left;
+    transform: scaleX(var(--sweep, 1));
+  }
+  .punch {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    letter-spacing: -0.02em;
+    color: var(--text-100);
+    margin-top: 1.8rem;
+  }
+</style>

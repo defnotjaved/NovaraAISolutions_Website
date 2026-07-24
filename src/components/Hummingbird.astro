@@ -1,0 +1,45 @@
+---
+// Geometric hummingbird — the Novara mark. Trinidad & Tobago's national
+// bird abstracted into five sharp strokes, drawn with the brand gradient.
+interface Props {
+  size?: number;
+  class?: string;
+}
+const { size = 32, class: className = '' } = Astro.props;
+const uid = Math.random().toString(36).slice(2, 8);
+---
+
+<svg
+  class={className}
+  width={size}
+  height={size}
+  viewBox="0 0 64 64"
+  fill="none"
+  aria-hidden="true"
+>
+  <defs>
+    <linearGradient id={`nvg-${uid}`} x1="8" y1="56" x2="58" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3d6bff" />
+      <stop offset="1" stop-color="#9b5cff" />
+    </linearGradient>
+    <linearGradient id={`nvw-${uid}`} x1="30" y1="34" x2="58" y2="4" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5587ff" />
+      <stop offset="1" stop-color="#2fd4c9" />
+    </linearGradient>
+  </defs>
+  <!-- beak -->
+  <path d="M3 25 L24 29 L23 32 Z" fill={`url(#nvg-${uid})`} />
+  <!-- body -->
+  <path
+    d="M22 28 C26 20 36 18 41 24 C46 30 45 40 38 45 C32 49 25 47 22 41 C19 36 20 31 22 28 Z"
+    fill={`url(#nvg-${uid})`}
+  />
+  <!-- upper wing -->
+  <path d="M33 24 L58 5 L41 29 Z" fill={`url(#nvw-${uid})`} opacity="0.9" />
+  <!-- lower wing -->
+  <path d="M37 29 L61 21 L42 35 Z" fill={`url(#nvw-${uid})`} opacity="0.65" />
+  <!-- tail -->
+  <path d="M26 45 L12 60 L21 42 Z" fill={`url(#nvg-${uid})`} opacity="0.8" />
+  <!-- eye -->
+  <circle cx="35" cy="26.5" r="1.6" fill="#071120" />
+</svg>

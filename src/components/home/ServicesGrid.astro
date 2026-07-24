@@ -1,0 +1,87 @@
+---
+import { PILLARS, SERVICES } from '../../data/services';
+
+const pillarOrder = ['conversational', 'operations', 'custom'] as const;
+---
+
+<section class="svc-sec section" id="services" aria-label="Services">
+  <div class="container head" data-reveal>
+    <span class="kicker">What we do for you</span>
+    <h2>Eight ways we put <span class="grad-text">AI to work.</span></h2>
+  </div>
+
+  <div class="container pillars">
+    {pillarOrder.map((pk) => (
+      <div class="pillar" data-reveal>
+        <div class="pillar-head">
+          <span class="pillar-label mono">{PILLARS[pk].label.toUpperCase()}</span>
+          <span class="pillar-strap">{PILLARS[pk].strap}</span>
+        </div>
+        <div class="cards">
+          {SERVICES.filter((s) => s.pillar === pk).map((s) => (
+            <a class="svc-card glass-card" href={`/services#${s.id}`}>
+              <h3>{s.title}</h3>
+              <p>{s.pain}</p>
+              <span class="more mono">SEE HOW →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .svc-sec { background: var(--ink-900); }
+  .head { margin-bottom: 3rem; }
+  .pillars { display: flex; flex-direction: column; gap: 2.6rem; }
+  .pillar-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .pillar-label {
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--icon-blue);
+  }
+  .pillar-strap {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--text-100);
+    font-size: 1.05rem;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .svc-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 1.3rem 1.4rem;
+    text-decoration: none;
+    transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+    position: relative;
+    overflow: hidden;
+  }
+  .svc-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 2px;
+    background: var(--brand-gradient);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur-slow) var(--ease-out);
+  }
+  .svc-card:hover { transform: translateY(-4px); border-color: var(--glass-border-bright); }
+  .svc-card:hover::before { transform: scaleX(1); }
+  .svc-card h3 { font-size: 1.02rem; }
+  .svc-card p { font-size: 0.85rem; color: var(--text-400); flex: 1; }
+  .more { font-size: 0.6rem; letter-spacing: 0.18em; color: var(--icon-blue); }
+</style>

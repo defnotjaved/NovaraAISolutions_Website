@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { PILLARS, SERVICES } from '../data/services';
+import { SITE, waLink } from '../data/site';
+
+const pillarOrder = ['conversational', 'operations', 'custom'] as const;
+---
+
+<BaseLayout
+  title="Services — Novara AI Solutions"
+  description="WhatsApp AI sales agents, AI voice and SMS, workflow automation, AI CRM, content automation, custom AI apps, and websites — built in Trinidad & Tobago."
+>
+  <section class="page-hero">
+    <div class="aurora" aria-hidden="true">
+      <div class="blob blue ph1"></div>
+      <div class="blob violet ph2"></div>
+      <div class="grain"></div>
+    </div>
+    <div class="container" data-reveal>
+      <span class="kicker">Services</span>
+      <h1>AI that earns <span class="grad-text">its keep.</span></h1>
+      <p class="lead">
+        Every service below is something we run ourselves, in production, for real Caribbean
+        businesses. No slideware — working software.
+      </p>
+    </div>
+  </section>
+
+  {pillarOrder.map((pk, pi) => (
+    <section class:list={['pillar-sec section', pi % 2 ? 'alt' : '']}>
+      <div class="container">
+        <div class="pillar-head" data-reveal>
+          <span class="kicker">{PILLARS[pk].label}</span>
+          <h2>{PILLARS[pk].strap}</h2>
+        </div>
+        <div class="svc-list">
+          {SERVICES.filter((s) => s.pillar === pk).map((s, i) => (
+            <article class="svc glass-card" id={s.id} data-reveal style={`--reveal-delay:${i * 90}ms`}>
+              <div class="svc-main">
+                <h3>{s.title}</h3>
+                <p class="pain">“{s.pain}”</p>
+                <p class="build">{s.build}</p>
+              </div>
+              <div class="svc-side">
+                <div class="svc-block">
+                  <span class="label mono">PLUGS INTO</span>
+                  <span class="value">{s.plugsInto}</span>
+                </div>
+                <div class="svc-block">
+                  <span class="label mono">PROOF</span>
+                  <span class="value">{s.proof}</span>
+                </div>
+                <a
+                  class="btn btn-wa svc-cta"
+                  href={waLink(`Hi Novara! I want to talk about ${s.title.toLowerCase()}.`)}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Talk about this →
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section closing">
+    <div class="container center" data-reveal>
+      <h2>Not sure which one <span class="grad-text">you need?</span></h2>
+      <p class="lead">That’s literally what the call is for.</p>
+      <a class="btn btn-primary" href={SITE.bookingUrl}>Book a call</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--ink-950);
+    padding: calc(var(--header-h) + 5rem) 0 4.5rem;
+  }
+  .ph1 { width: 44vw; height: 44vw; left: -12vw; top: -16vw; }
+  .ph2 { width: 36vw; height: 36vw; right: -10vw; top: -4vw; }
+  .page-hero .container { position: relative; z-index: 2; }
+  .page-hero .lead { margin-top: 1.2rem; }
+
+  .pillar-sec { background: var(--ink-900); }
+  .pillar-sec.alt { background: var(--ink-950); }
+  .pillar-head { margin-bottom: 2.2rem; }
+
+  .svc-list { display: flex; flex-direction: column; gap: 1.2rem; }
+  .svc {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2rem;
+    padding: 1.8rem 2rem;
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
+  .svc h3 { font-size: 1.35rem; margin-bottom: 0.7rem; }
+  .pain {
+    font-style: italic;
+    color: var(--gold-400);
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+  .build { color: var(--text-300); font-size: 0.97rem; }
+  .svc-side { display: flex; flex-direction: column; gap: 1rem; }
+  .svc-block { display: flex; flex-direction: column; gap: 0.25rem; }
+  .label { font-size: 0.6rem; letter-spacing: 0.2em; color: var(--text-500); }
+  .value { font-size: 0.85rem; color: var(--text-300); }
+  .svc-cta { margin-top: auto; align-self: flex-start; font-size: 0.85rem; padding: 0.65rem 1.3rem; }
+
+  .closing { background: var(--ink-900); }
+  .center { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+
+  @media (max-width: 820px) {
+    .svc { grid-template-columns: 1fr; }
+  }
+</style>

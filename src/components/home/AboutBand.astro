@@ -1,0 +1,67 @@
+---
+import Hummingbird from '../Hummingbird.astro';
+---
+
+<section class="about-sec section" id="about" aria-label="About Novara">
+  <div class="contours" aria-hidden="true">
+    <svg viewBox="0 0 900 500" preserveAspectRatio="xMidYMid slice">
+      <g fill="none" stroke="rgba(96,165,250,0.10)" stroke-width="1.2" data-contours>
+        <path d="M120 400 C 60 320, 100 220, 220 200 C 340 180, 420 240, 430 320 C 440 400, 340 460, 240 450 C 170 444, 150 430, 120 400 Z" />
+        <path d="M150 390 C 100 325, 135 240, 235 225 C 335 210, 395 255, 402 318 C 410 382, 330 432, 250 425 C 195 420, 175 415, 150 390 Z" />
+        <path d="M185 375 C 145 328, 172 262, 250 250 C 328 238, 368 272, 373 320 C 378 368, 318 402, 262 397 C 222 393, 205 397, 185 375 Z" />
+        <path d="M640 180 C 600 120, 660 60, 740 70 C 820 80, 850 140, 830 200 C 810 260, 720 270, 670 240 C 645 224, 655 205, 640 180 Z" />
+        <path d="M665 175 C 636 132, 680 92, 740 100 C 800 108, 820 152, 805 195 C 790 238, 722 244, 686 222 C 668 210, 676 195, 665 175 Z" />
+      </g>
+    </svg>
+  </div>
+
+  <div class="container inner" data-reveal>
+    <Hummingbird size={54} class="about-bird" />
+    <h2>Built in Trinidad &amp; Tobago.<br /><span class="grad-text">Deployed for the Caribbean.</span></h2>
+    <p class="lead">
+      Novara builds AI the way the region actually works: on WhatsApp, on mobile, on trust. We ship
+      software that respects people — no surveillance, no invented answers, and an AI that knows
+      when to hand you to a human.
+    </p>
+    <ul class="values">
+      <li><span class="mono">01</span> Grounded — the AI answers from your real data, never invention.</li>
+      <li><span class="mono">02</span> Humans in the loop — escalation is a feature, not a failure.</li>
+      <li><span class="mono">03</span> Compliance-first — official APIs, provenance records, no shortcuts.</li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .about-sec { background: var(--ink-900); position: relative; overflow: hidden; }
+  .contours { position: absolute; inset: 0; }
+  .contours svg { width: 100%; height: 100%; }
+  .inner {
+    position: relative;
+    z-index: 2;
+    max-width: 44rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .about-bird { filter: drop-shadow(0 4px 18px oklch(0.58 0.23 285 / 0.5)); }
+  .values {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 0.6rem;
+  }
+  .values li {
+    display: flex;
+    gap: 0.9rem;
+    align-items: baseline;
+    color: var(--text-300);
+    font-size: 0.95rem;
+  }
+  .values .mono {
+    color: var(--icon-blue);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+</style>

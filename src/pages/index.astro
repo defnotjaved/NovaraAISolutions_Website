@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import ProblemStrip from '../components/home/ProblemStrip.astro';
+import RelayShowcase from '../components/home/RelayShowcase.astro';
+import ReachShowcase from '../components/home/ReachShowcase.astro';
+import ProductConstellation from '../components/home/ProductConstellation.astro';
+import CaseStudyBand from '../components/home/CaseStudyBand.astro';
+import ServicesGrid from '../components/home/ServicesGrid.astro';
+import RoiSection from '../components/home/RoiSection.astro';
+import AboutBand from '../components/home/AboutBand.astro';
+import CtaFinale from '../components/home/CtaFinale.astro';
+---
+
+<BaseLayout
+  title="Novara AI Solutions — AI that runs your business on WhatsApp"
+  description="Caribbean-built AI agents, automation, and software from Trinidad & Tobago. WhatsApp AI sales agents, voice agents, workflow automation, and custom AI apps."
+>
+  <Hero />
+  <ProblemStrip />
+  <RelayShowcase />
+  <ReachShowcase />
+  <ProductConstellation />
+  <CaseStudyBand />
+  <ServicesGrid />
+  <RoiSection />
+  <AboutBand />
+  <CtaFinale />
+
+  <script>
+    import { initHomeScroll } from '../components/home/homeScroll';
+    initHomeScroll();
+  </script>
+</BaseLayout>

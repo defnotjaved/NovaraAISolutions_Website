@@ -1,0 +1,81 @@
+---
+import RelayDemo from '../../islands/RelayDemo';
+import { SITE } from '../../data/site';
+
+const ticker = [
+  'slot-filling orders',
+  'human escalation',
+  'product images',
+  'ad attribution',
+  'delivery dispatch',
+  'renewals & winbacks',
+  'broadcasts',
+  'multi-tenant',
+  'role-based dashboard',
+  'payment verification',
+];
+---
+
+<section class="relay-sec section" id="relay" aria-label="Relay — WhatsApp AI sales agent">
+  <div class="container head" data-reveal>
+    <span class="kicker">Product 01 — Relay</span>
+    <h2>Watch the AI <span class="grad-text">close a sale.</span></h2>
+    <p class="lead">
+      This is a live replica of Relay, our WhatsApp AI sales agent — same bubbles, same brain,
+      same structured tags it emits in production. <strong>You play the customer.</strong>
+    </p>
+  </div>
+
+  <div class="container demo-wrap" data-reveal>
+    <RelayDemo client:visible />
+  </div>
+
+  <div class="container under" data-reveal>
+    <p class="mono under-line">
+      This is live at <a href={SITE.relayUrl} target="_blank" rel="noopener">relay.bynovara.com</a> —
+      want it answering for your business?
+    </p>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track mono">
+      {[...ticker, ...ticker].map((t) => (
+        <span class="ticker-item">{t} <span class="sep">·</span></span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .relay-sec { background: var(--ink-900); overflow: hidden; }
+  .head { max-width: 46rem; margin-bottom: 3rem; }
+  .head .lead strong { color: var(--text-100); }
+  .demo-wrap { margin-bottom: 2.2rem; }
+  .under { text-align: center; margin-bottom: 3rem; }
+  .under-line { font-size: 0.72rem; letter-spacing: 0.1em; color: var(--text-400); }
+  .under-line a { color: var(--icon-blue); }
+
+  .ticker {
+    border-block: 1px solid var(--glass-border);
+    padding-block: 0.85rem;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .ticker-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation: marquee 36s linear infinite;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-400);
+  }
+  .ticker-item { white-space: nowrap; }
+  .sep { color: var(--brand-blue); margin-left: 2rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; }
+  }
+</style>

@@ -1,0 +1,81 @@
+/* ============================================================
+   Novara AI Solutions — Design Tokens
+   Primary voice: Novara electric blue → violet (from Relay).
+   Secondary temperature: Caribbean teal / sunset / gold.
+   ============================================================ */
+
+:root {
+  /* ── Navy inks (Relay dashboard chrome, extended) ── */
+  --ink-950: #050d18;
+  --ink-900: #071120; /* Relay sidebar rail */
+  --ink-850: #0a1628; /* Relay sidebar */
+  --ink-800: #0e1e38;
+  --ink-700: #16294a;
+  --ink-600: #1e355e;
+
+  /* ── Text on navy ── */
+  --text-100: #f2f6ff;
+  --text-300: #c1d0e8; /* Relay sidebar-fg */
+  --text-400: #8fa5c9;
+  --text-500: #5f7499;
+
+  /* ── Novara accent: electric blue → violet ── */
+  --blue-hex: #3d6bff;
+  --blue-bright: #5587ff; /* Relay dark-theme accent */
+  --icon-blue: #60a5fa;   /* Relay sidebar active icon */
+  --brand-blue: oklch(0.58 0.23 265);
+  --brand-violet: oklch(0.58 0.23 305);
+  --brand-gradient: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-violet) 100%);
+  --brand-gradient-text: linear-gradient(120deg, oklch(0.74 0.16 255), oklch(0.72 0.19 305));
+  --brand-gradient-soft: linear-gradient(135deg,
+    oklch(0.58 0.23 265 / 0.12) 0%,
+    oklch(0.58 0.23 305 / 0.12) 100%);
+
+  /* ── Caribbean secondaries (accents only, never large surfaces) ── */
+  --teal-400: #2fd4c9;
+  --teal-300: #6ff0e4;
+  --sunset-500: #ff7a2f;
+  --gold-400: #ffb347;
+
+  /* ── Semantic ── */
+  --success: #3fd07a;
+  --warning: #f0a53c;
+  --warning-soft: rgba(240, 165, 60, 0.14);
+  --danger: #ff5d5d;
+
+  /* ── Glass ── */
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-strong: rgba(255, 255, 255, 0.09);
+  --glass-border: rgba(255, 255, 255, 0.11);
+  --glass-border-bright: rgba(255, 255, 255, 0.2);
+
+  /* ── Radii (marketing scale) ── */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* ── Shadows / glows ── */
+  --shadow-card: 0 12px 40px rgba(3, 8, 18, 0.55);
+  --shadow-accent-glow: 0 0 40px oklch(0.58 0.23 275 / 0.35);
+  --shadow-teal-glow: 0 0 40px rgba(47, 212, 201, 0.22);
+  --shadow-sunset-glow: 0 0 40px rgba(255, 122, 47, 0.25);
+  --shadow-bubble: 0 1px 2px rgba(10, 14, 24, 0.13);
+
+  /* ── Type ── */
+  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ── Motion (Relay tokens) ── */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 120ms;
+  --dur-base: 180ms;
+  --dur-slow: 320ms;
+
+  /* ── Layout ── */
+  --container: 1180px;
+  --header-h: 72px;
+}

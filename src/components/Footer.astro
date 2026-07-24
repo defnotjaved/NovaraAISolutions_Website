@@ -1,0 +1,87 @@
+---
+import Hummingbird from './Hummingbird.astro';
+import { SITE, waLink } from '../data/site';
+const year = new Date().getFullYear();
+const wa = waLink('Hi Novara! I want to talk about AI for my business.');
+---
+
+<footer class="site-footer">
+  <div class="container grid">
+    <div class="col brand-col">
+      <a class="brand" href="/" aria-label="Novara AI Solutions — home">
+        <Hummingbird size={34} />
+        <span class="brand-name">Novara <span class="grad-text">AI</span></span>
+      </a>
+      <p class="tagline mono">{SITE.tagline}</p>
+      <p class="muted small">Built in Trinidad &amp; Tobago. Deployed for the Caribbean.</p>
+    </div>
+
+    <nav class="col" aria-label="Footer">
+      <span class="head mono">EXPLORE</span>
+      <a href="/services">Services</a>
+      <a href="/products">Products</a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <div class="col">
+      <span class="head mono">PRODUCTS</span>
+      <a href="/products#relay">Relay — WhatsApp AI</a>
+      <a href="/products#reach">Reach — School transport</a>
+      <a href="/products#iconbook">IconBook — Bookings</a>
+    </div>
+
+    <div class="col">
+      <span class="head mono">TALK TO US</span>
+      <a href={wa} target="_blank" rel="noopener">WhatsApp</a>
+      <a href={SITE.bookingUrl}>Book a call</a>
+      <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+    </div>
+  </div>
+
+  <div class="container legal">
+    <span class="mono">© {year} {SITE.name}</span>
+    <span class="mono muted">bynovara.com</span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink-900);
+    border-top: 1px solid var(--glass-border);
+    padding: 4rem 0 2rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  .col { display: flex; flex-direction: column; gap: 0.7rem; align-items: flex-start; }
+  .brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+  .brand-name {
+    font-family: var(--font-display); font-weight: 800;
+    font-size: 1.3rem; color: var(--text-100);
+  }
+  .tagline { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-400); }
+  .small { font-size: 0.85rem; }
+  .head {
+    font-size: 0.66rem; letter-spacing: 0.24em;
+    color: var(--text-500); margin-bottom: 0.3rem;
+  }
+  .col a:not(.brand) {
+    color: var(--text-300); text-decoration: none; font-size: 0.93rem;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+  .col a:not(.brand):hover { color: var(--text-100); }
+  .legal {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 1.6rem; border-top: 1px solid var(--glass-border);
+    font-size: 0.72rem; color: var(--text-400);
+  }
+  @media (max-width: 860px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
